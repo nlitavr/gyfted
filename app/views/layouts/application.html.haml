@@ -6,6 +6,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = link_to "about", about_path
-    = link_to "home", root_path
-    = yield
+    = render :partial => 'layouts/header'
+    -#= link_to "about", about_path
+    -#= link_to "home", root_path
+    .container
+      = yield

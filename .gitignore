@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/assets/images/.keep
+/controllers/concerns/.keep
+.DS_Store
+config/database.yml
+public/assets/**
+*.keep
+*.idea
