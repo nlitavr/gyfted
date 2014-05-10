@@ -9,7 +9,7 @@
     %meta.viewport{"content"=>"width=device-width, initial-scale=1.0"}
   %body
     = render :partial => 'layouts/header'
-    -#= link_to "about", about_path
-    -#= link_to "home", root_path
     .container
+      = flash.each do |name, msg|
+      = content_tag :div, msg, class: "alert alert-#{name}"
       = yield

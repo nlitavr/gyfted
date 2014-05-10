@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'html2haml'
 gem 'haml'
 gem 'haml-rails'
+
 group :development do
   gem 'sqlite3'
   gem 'spring'
