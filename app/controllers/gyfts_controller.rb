@@ -1,30 +1,25 @@
 class GyftsController < ApplicationController
   before_action :set_gyft, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /gyfts
-  # GET /gyfts.json
+
   def index
     @gyfts = Gyft.all
   end
 
-  # GET /gyfts/1
-  # GET /gyfts/1.json
   def show
   end
 
-  # GET /gyfts/new
   def new
-    @gyft = Gyft.new
+    @gyft = current_user.gyfts.build
   end
 
-  # GET /gyfts/1/edit
   def edit
   end
 
-  # POST /gyfts
-  # POST /gyfts.json
   def create
-    @gyft = Gyft.new(gyft_params)
+    @gyft = current_user.gyfts.build(gyft_params)
 
     respond_to do |format|
       if @gyft.save
@@ -37,8 +32,6 @@ class GyftsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /gyfts/1
-  # PATCH/PUT /gyfts/1.json
   def update
     respond_to do |format|
       if @gyft.update(gyft_params)
@@ -51,8 +44,6 @@ class GyftsController < ApplicationController
     end
   end
 
-  # DELETE /gyfts/1
-  # DELETE /gyfts/1.json
   def destroy
     @gyft.destroy
     respond_to do |format|
@@ -62,13 +53,18 @@ class GyftsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def correct_user
+      @gyft = current_user.gyfts.find_by(id: params[:id])
+      redirect_to pins_path, notice: "Not Authorized!" if @gyft.nil?
+    end
+
     def set_gyft
       @gyft = Gyft.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gyft_params
-      params.require(:gyft).permit(:name, :description, :desire, :price)
+      params.require(:gyft).permit(:name, :description, :desire, :price, :image)
     end
 end

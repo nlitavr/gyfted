@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', '~> 3.2.4'
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'bootstrap-sass'
 gem 'html2haml'
 gem 'haml'

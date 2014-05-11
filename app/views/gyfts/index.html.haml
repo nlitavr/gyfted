@@ -1,25 +1,29 @@
-%h1 Listing gyfts
-
-%table
-  %tr
-    %th Name
-    %th Description
-    %th Desire
-    %th Price
-    %th
-    %th
-    %th
-
-  - @gyfts.each do |gyft|
+.jumbotron
+  %table
     %tr
-      %td= gyft.name
-      %td= gyft.description
-      %td= gyft.desire
-      %td= gyft.price
-      %td= link_to 'Show', gyft
-      %td= link_to 'Edit', edit_gyft_path(gyft)
-      %td= link_to 'Destroy', gyft, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th Image
+      %th Description
+      %th Desire
+      %th Price
+      %th User Id
+      %th
+      %th
+      %th
 
-%br
+    - @gyfts.each do |gyft|
+      %tr
+        %td= gyft.name
+        %td= image_tag gyft.image.url(:medium)
+        %td= gyft.description
+        %td= gyft.desire
+        %td= gyft.price
+        %td= gyft.user.email
+        %td= link_to 'Show', gyft
+        -#- if gyft.user == current_user
+        %td= link_to 'Edit', edit_gyft_path(gyft)
+        %td= link_to 'Destroy', gyft, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Gyft', new_gyft_path
+  %br
+  - if user_signed_in?
+    = link_to 'New Gyft', new_gyft_path

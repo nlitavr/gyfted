@@ -1,18 +1,22 @@
-%p#notice= notice
+.jumbotron
 
-%p
-  %b Name:
-  = @gyft.name
-%p
-  %b Description:
-  = @gyft.description
-%p
-  %b Desire:
-  = @gyft.desire
-%p
-  %b Price:
-  = @gyft.price
+  %p#notice= notice
 
-= link_to 'Edit', edit_gyft_path(@gyft)
-\|
-= link_to 'Back', gyfts_path
+  = image_tag @gyft.image.url(:medium)
+
+  %p
+    %b Name:
+    = @gyft.name
+  %p
+    %b Description:
+    = @gyft.description
+  %p
+    %b Desire:
+    = @gyft.desire
+  %p
+    %b Price:
+    = @gyft.price
+  - if user_signed_in?
+    = link_to 'Edit', edit_gyft_path(@gyft)
+    \|
+    = link_to 'Back', gyfts_path

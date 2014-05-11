@@ -1,4 +1,4 @@
-= form_for @gyft do |f|
+= form_for @gyft, html: { multipart: true } do |f|
   - if @gyft.errors.any?
     #error_explanation
       %h2= "#{pluralize(@gyft.errors.count, "error")} prohibited this gyft from being saved:"
@@ -6,17 +6,20 @@
         - @gyft.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: "form-control"
+  .form-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group
     = f.label :description
-    = f.text_field :description
-  .field
+    = f.text_field :description, class: "form-control"
+  .form-group
     = f.label :desire
-    = f.text_field :desire
-  .field
+    = f.text_field :desire, class: "form-control"
+  .form-group
     = f.label :price
-    = f.text_field :price
+    = f.text_field :price, class: "form-control"
   .actions
     = f.submit 'Save'
