@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :gyfts
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
 end

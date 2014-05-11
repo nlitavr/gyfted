@@ -65,6 +65,6 @@ class GyftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gyft_params
-      params.require(:gyft).permit(:name, :description, :desire, :price)
+      params.require(:gyft).permit(:name, :description, :desire, :price, :image)
     end
 end
