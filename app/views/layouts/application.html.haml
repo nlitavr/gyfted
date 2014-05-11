@@ -10,6 +10,8 @@
   %body
     = render :partial => 'layouts/header'
     .container
-      = flash.each do |name, msg|
-        content_tag :div, #{msg}, class: "alert alert-info"
+      - flash.each do |type, msg|
+        %div{:class => "alert alert-#{type == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
+          %button.close &times;
+          = msg if msg.is_a?(String)
       = yield
