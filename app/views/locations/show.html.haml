@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @location.url
+%p
+  %b Gyft:
+  = @location.gyft_id
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path

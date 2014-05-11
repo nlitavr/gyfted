@@ -1,0 +1,25 @@
+%h1 Listing gyfts
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Desire
+    %th Price
+    %th
+    %th
+    %th
+
+  - @gyfts.each do |gyft|
+    %tr
+      %td= gyft.name
+      %td= gyft.description
+      %td= gyft.desire
+      %td= gyft.price
+      %td= link_to 'Show', gyft
+      %td= link_to 'Edit', edit_gyft_path(gyft)
+      %td= link_to 'Destroy', gyft, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Gyft', new_gyft_path
